@@ -102,7 +102,6 @@ contract NinjaToken is Ownable {
   uint256 private constant _maximumSupply = 30000 * 10 ** decimals;
   uint256 private constant _maximumPresaleBurnAmount = 18000 * 10 ** decimals;
   uint256 public _presaleBurnTotal = 0;
-  uint256 public _stakingBurnTotal = 0;
   // owner of the contract
   uint256 public _totalSupply;
 
@@ -144,7 +143,7 @@ contract NinjaToken is Ownable {
     return true;
   }
 
-  // handles presale burn + staking burn.
+  // handles presale burn
   function burn (uint256 _burnAmount, bool _presaleBurn) public onlyOwner returns (bool success) {
     if (_presaleBurn) {
       require(_presaleBurnTotal.add(_burnAmount) <= _maximumPresaleBurnAmount);
